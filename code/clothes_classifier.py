@@ -40,7 +40,7 @@ class ClothesTypeClassifier():
                 gt_dir=r'../list_attr_img.txt'
             )
 
-        self.x_train = np.array(self.x_train[:1000])
+        self.x_train = np.array(self.x_train)
         self.y_train = np.array(self.y_train, dtype=np.object)
         self.x_val = np.array(self.x_val)
         self.y_val = np.array(self.y_val, dtype=np.object)
