@@ -20,29 +20,32 @@ import math, random
 import preprocess
 
 class ClothesTypeClassifier():
-    def __init__(self, input_dim=64, batch_size=128, nfolds=5, epochs=300, learn_rate=1e-4):
+    def __init__(self, input_dim=64, batch_size=256, nfolds=1, epochs=300, learn_rate=1e-4):
         self.input_dim = input_dim  # 197
         self.batch_size = batch_size
         self.nfolds = nfolds
         self.epochs = epochs
         self.learn_rate = learn_rate
         self.load_data()
-        self.numCategory = 50
         self.nTTA = 2
         self.nAug = 2
         # self.model = newnet.denseNet121(self.numCategory)
         self.model = newnet.model3(self.input_dim, self.numCategory)
 
     def load_data(self):
-        self.x_train, self.y_train, self.x_val, self.y_val, self.x_test, self.y_test = \
-            preprocess.processing(input_dir='/home/yzm/shenzhenyuan/AI/projects/clothes/input/Category and Attribute Prediction Benchmark/Img/img')
+        self.numCategory, self.x_train, self.y_train, self.x_val, self.y_val, self.x_test, self.y_test = \
+            preprocess.processing(
+                input_dir='/home/yzm/shenzhenyuan/AI/projects/clothes/input/Category and Attribute Prediction Benchmark/Img/img',
+                labels_dir=r'../list_attr_cloth.txt',
+                gt_dir=r'../list_attr_img.txt'
+            )
 
         self.x_train = np.array(self.x_train)
-        self.y_train = np.array(self.y_train, dtype='uint8')
+        self.y_train = np.array(self.y_train, dtype=np.object)
         self.x_val = np.array(self.x_val)
-        self.y_val = np.array(self.y_val, dtype='uint8')
+        self.y_val = np.array(self.y_val, dtype=np.object)
         self.x_test = np.array(self.x_test)
-        self.y_test = np.array(self.y_test, dtype='uint8')
+        self.y_test = np.array(self.y_test, dtype=np.object)
         labels = preprocess.load_labels()
         self.label_map = {l: i for i, l in enumerate(labels)}
         self.inv_label_map = {i: l for l, i in self.label_map.items()}
@@ -64,6 +67,7 @@ class ClothesTypeClassifier():
         x_val = self.x_val[val_index]
         y_val = self.y_val[val_index]
 
+        thres = []
         def valid_generator():
             while True:
                 for start in range(0, nVal, self.batch_size):
@@ -77,7 +81,8 @@ class ClothesTypeClassifier():
                         img = cv2.resize(img, (self.input_dim, self.input_dim))
                         img = transformations2(img, np.random.randint(self.nAug))
                         targets = np.zeros(self.numCategory)
-                        targets[img_val_labels[i]] = 1
+                        for j in img_val_labels[i]:
+                            targets[j] = 1
                         x_batch.append(img)
                         y_batch.append(targets)
                     x_batch = np.array(x_batch, np.float32)
@@ -97,7 +102,8 @@ class ClothesTypeClassifier():
                         img = cv2.resize(img, (self.input_dim, self.input_dim))
                         img = transformations2(img, np.random.randint(self.nAug))
                         targets = np.zeros(self.numCategory)
-                        targets[img_train_labels[i]] = 1
+                        for j in img_train_labels[i]:
+                            targets[j] = 1
                         x_batch.append(img)
                         y_batch.append(targets)
                     x_batch = np.array(x_batch, np.float32)
@@ -148,15 +154,16 @@ class ClothesTypeClassifier():
         y_valid = []
         for i in range(nVal):
             targets = np.zeros(self.numCategory)
-            targets[self.y_val[i]] = 1
+            for j in self.y_val[i]:
+                targets[j] = 1
             y_valid.append(targets)
         y_valid = np.array(y_valid, np.uint8)
 
         best_threshold, best_scores = find_f_measure_threshold2(p_valid, y_valid)
-
+        thres.append(best_threshold)
         val_score = best_scores[-1]
 
-        return best_threshold, val_score
+        return thres, val_score
 
 
     def test(self, thres, val_score, early_fusion=True):
@@ -180,21 +187,22 @@ class ClothesTypeClassifier():
         y_full_test = []
         model_path = os.path.join('', 'clothes_classifier_model.h5')
 
-        if os.path.isfile(model_path):
-            self.model.load_weights(model_path)
+        if not os.path.isfile(model_path):
+            return RuntimeError('No model file exists.')
+        self.model.load_weights(model_path)
 
-            # n-fold TTA
-            p_full_test = []
-            for i in range(self.nTTA):
-                p_test = self.model.predict_generator(generator=test_generator(transformation=i),
+        # n-fold TTA
+        p_full_test = []
+        for i in range(self.nTTA):
+            p_test = self.model.predict_generator(generator=test_generator(transformation=i),
                                                      steps=math.ceil(nTest / float(self.batch_size)))
-                p_full_test.append(p_test)
+            p_full_test.append(p_test)
 
-                p_test = np.array(p_full_test[0])
-                for i in range(1, self.nTTA):
-                    p_test += np.array(p_full_test[i])
-                p_test /= self.nTTA
-                y_full_test.append(p_test)
+        p_test = np.array(p_full_test[0])
+        for i in range(1, self.nTTA):
+            p_test += np.array(p_full_test[i])
+        p_test /= self.nTTA
+        y_full_test.append(p_test)
 
         raw_result = np.zeros(y_full_test[0].shape)
         if early_fusion:
@@ -211,7 +219,15 @@ class ClothesTypeClassifier():
                 raw_result += (y_full_test[i] > thres[i])
             result = raw_result / float(self.nfolds)
 
-        f2 = fbeta_score(self.y_test, result, beta=2, average='samples')
+
+        y_test = []
+        for i in range(nTest):
+            targets = np.zeros(self.numCategory)
+            for j in self.y_test[i]:
+                targets[j] = 1
+            y_test.append(targets)
+        y_test = np.array(y_test, np.uint8)
+        f2 = fbeta_score(y_test, result, beta=2, average='samples')
         print('-------------------------------------')
         print('F-score: {}'.format(f2))
 
@@ -230,7 +246,7 @@ class ClothesTypeClassifier():
         df_test_data = pd.DataFrame()
         df_test_data['image_names'] = self.x_test
         df_test_data['tags'] = preds
-        df_test_data.to_csv('../result_.csv'.format(val_score), index=False)
+        df_test_data.to_csv('../result_{}.csv'.format(val_score), index=False)
 
 if __name__ == "__main__":
     af = ClothesTypeClassifier()
