@@ -8,7 +8,7 @@ def load_labels(label_filepath=r'../list_category_cloth.txt'):
         fl.readline()
         fl.readline()
         for line in fl:
-            labels.append(line.strip().split()[0])
+            labels.append(' '.join(line.strip().split()[:-1]))
     return labels
 
 def load_bbox_dict(bbox_filepath='../list_bbox.txt'):
@@ -41,7 +41,7 @@ def get_clothes_region(bbox_dict, input_dir, img_path):
     return cv.imread(input_img_path)[y1:y2, x1:x2]
 
 def processing(
-        input_dir=r'G:\BaiduNetdiskDownload\DeepFashion\Category and Attribute Prediction Benchmark\Img\img',
+        input_dir=r'G:\BaiduNetdiskDownload\DeepFashion\Category and Attribute Prediction Benchmark\Img',
         output_dir=r'../input/crop_image',
         labels_dir=r'../list_category_cloth.txt',
         gt_dir=r'../list_category_img.txt'):
@@ -83,6 +83,7 @@ def processing(
 
             i += 1
             if i % 10000 == 0:
+                #break
                 print(i)
 
             if numCategory == len(labels):
@@ -111,7 +112,7 @@ def processing(
     for j in range(numCategory):
         print('category {0}: {1}'.format(j+1, labelDistr[j]))
 
-    return numCategory, x_train, y_train, x_val, y_val, x_test, y_test
+    return numCategory, classes, x_train, y_train, x_val, y_val, x_test, y_test
 
 if __name__ == '__main__':
     processing()

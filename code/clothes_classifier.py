@@ -33,9 +33,9 @@ class ClothesTypeClassifier():
         self.model = newnet.model3(self.input_dim, self.numCategory)
 
     def load_data(self):
-        self.numCategory, self.x_train, self.y_train, self.x_val, self.y_val, self.x_test, self.y_test = \
+        self.numCategory, self.labels, self.x_train, self.y_train, self.x_val, self.y_val, self.x_test, self.y_test = \
             preprocess.processing(
-                input_dir='/home/yzm/shenzhenyuan/AI/projects/clothes/input/Category and Attribute Prediction Benchmark/Img/img',
+                input_dir='../input/Category and Attribute Prediction Benchmark/Img',
                 labels_dir=r'../list_attr_cloth.txt',
                 gt_dir=r'../list_attr_img.txt'
             )
@@ -46,9 +46,10 @@ class ClothesTypeClassifier():
         self.y_val = np.array(self.y_val, dtype=np.object)
         self.x_test = np.array(self.x_test)
         self.y_test = np.array(self.y_test, dtype=np.object)
-        labels = preprocess.load_labels()
-        self.label_map = {l: i for i, l in enumerate(labels)}
+        # labels = preprocess.load_labels(label_filepath=r'../list_attr_cloth.txt')
+        self.label_map = {l: i for i, l in enumerate(self.labels)}
         self.inv_label_map = {i: l for l, i in self.label_map.items()}
+        print(self.inv_label_map)
 
     def train(self):
         nTrain = len(self.x_train)
@@ -139,7 +140,7 @@ class ClothesTypeClassifier():
             generator=train_generator(),
             steps_per_epoch=math.ceil(nTrain / float(self.batch_size)),
             epochs=self.epochs,
-            verbose=2,
+            verbose=1,
             callbacks=callbacks,
             validation_data=valid_generator(),
             validation_steps=math.ceil(nVal / float(self.batch_size)))
@@ -159,7 +160,7 @@ class ClothesTypeClassifier():
             y_valid.append(targets)
         y_valid = np.array(y_valid, np.uint8)
 
-        best_threshold, best_scores = find_f_measure_threshold2(p_valid, y_valid)
+        best_threshold, bestfbeta_scores = find_f_measure_threshold2(p_valid, y_valid, num_iters=20)
         thres.append(best_threshold)
         val_score = best_scores[-1]
 
