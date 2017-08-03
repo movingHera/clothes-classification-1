@@ -160,7 +160,7 @@ class ClothesTypeClassifier():
             y_valid.append(targets)
         y_valid = np.array(y_valid, np.uint8)
 
-        best_threshold, bestfbeta_scores = find_f_measure_threshold2(p_valid, y_valid, num_iters=20)
+        best_threshold, best_scores = find_f_measure_threshold2(p_valid, y_valid, num_iters=20)
         thres.append(best_threshold)
         val_score = best_scores[-1]
 
