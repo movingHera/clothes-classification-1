@@ -111,8 +111,23 @@ def processing(
     print(sum(labelDistr))
     for j in range(numCategory):
         print('category {0}: {1}'.format(j+1, labelDistr[j]))
+    label_map = {l: i for i, l in enumerate(classes)}
+    inv_label_map = {i: l for l, i in label_map.items()}
 
-    return numCategory, classes, x_train, y_train, x_val, y_val, x_test, y_test
+    # save data distribution to .csv file
+    save_data_dist(inv_label_map, labelDistr)
+    return numCategory, label_map, inv_label_map, x_train, y_train, x_val, y_val, x_test, y_test
+
+def save_data_dist(inv_label_map, labelDistr):
+    distr = {inv_label_map[i]: j for i, j in enumerate(labelDistr)}
+    result = sorted(distr.items(), lambda x, y: cmp(x[1], y[1])) # sort by values
+
+    counts = [item[1] for item in result]
+    attrs = [item[0] for item in result]
+    import pandas as pd
+    df = pd.DataFrame({'attributes': attrs, 'count': counts})
+    df.to_csv('../attr_distr.csv', index=False)
+
 
 if __name__ == '__main__':
     processing()

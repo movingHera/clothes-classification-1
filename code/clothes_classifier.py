@@ -20,7 +20,7 @@ import math, random
 import preprocess
 
 class ClothesTypeClassifier():
-    def __init__(self, input_dim=64, batch_size=256, nfolds=1, epochs=300, learn_rate=1e-4):
+    def __init__(self, input_dim=256, batch_size=16, nfolds=1, epochs=300, learn_rate=1e-4):
         self.input_dim = input_dim  # 197
         self.batch_size = batch_size
         self.nfolds = nfolds
@@ -29,11 +29,11 @@ class ClothesTypeClassifier():
         self.load_data()
         self.nTTA = 2
         self.nAug = 2
-        # self.model = newnet.denseNet121(self.numCategory)
-        self.model = newnet.model3(self.input_dim, self.numCategory)
+        self.model = newnet.denseNet121(self.input_dim, self.numCategory)
+        #self.model = newnet.model3(self.input_dim, self.numCategory)
 
     def load_data(self):
-        self.numCategory, self.labels, self.x_train, self.y_train, self.x_val, self.y_val, self.x_test, self.y_test = \
+        self.numCategory, self.label_map, self.inv_label_map, self.x_train, self.y_train, self.x_val, self.y_val, self.x_test, self.y_test = \
             preprocess.processing(
                 input_dir='../input/Category and Attribute Prediction Benchmark/Img',
                 labels_dir=r'../list_attr_cloth.txt',
@@ -47,8 +47,8 @@ class ClothesTypeClassifier():
         self.x_test = np.array(self.x_test)
         self.y_test = np.array(self.y_test, dtype=np.object)
         # labels = preprocess.load_labels(label_filepath=r'../list_attr_cloth.txt')
-        self.label_map = {l: i for i, l in enumerate(self.labels)}
-        self.inv_label_map = {i: l for l, i in self.label_map.items()}
+        # self.label_map = {l: i for i, l in enumerate(self.labels)}
+        # self.inv_label_map = {i: l for l, i in self.label_map.items()}
         print(self.inv_label_map)
 
     def train(self):
@@ -106,6 +106,7 @@ class ClothesTypeClassifier():
                         for j in img_train_labels[i]:
                             targets[j] = 1
                         x_batch.append(img)
+                        #print(targets)
                         y_batch.append(targets)
                     x_batch = np.array(x_batch, np.float32)
                     y_batch = np.array(y_batch, np.uint8)

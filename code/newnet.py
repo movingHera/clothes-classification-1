@@ -323,10 +323,10 @@ def denseNet(input_dim):
     return model
 
 
-def denseNet121(input_dim):
+def denseNet121(input_dim, nd_classes):
     weights_path = '../weights/densenet121_weights_tf.h5'
 
     # Test pretrained model
     # base_model = densenet121.DenseNet(reduction=0.5, classes=1000, weights_path=weights_path)
-    model = densenet121.densenet121_model(img_rows=input_dim, img_cols=input_dim, color_type=3, num_classes=17, weights_path = weights_path)
+    model = densenet121.densenet121_model(img_rows=input_dim, img_cols=input_dim, color_type=3, num_classes=nd_classes, weights_path = weights_path)
     return model
