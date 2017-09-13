@@ -1,51 +1,1001 @@
 attributes,count
-Sundress,0
-Nightdress,0
-Cape,0
-Shirtdress,0
-Halter,17
-Coverup,17
-Sarong,32
-Jodhpurs,45
-Gauchos,49
-Caftan,54
-Onesie,70
-Capris,77
-Peacoat,97
-Kaftan,126
-Turtleneck,146
-Robe,150
-Anorak,160
-Bomber,309
-Flannel,324
-Button-Down,330
-Trunks,386
-Culottes,486
-Chinos,527
-Jeggings,594
-Parka,676
-Henley,716
-Jersey,748
-Poncho,791
-Sweatshorts,1106
-Cutoffs,1669
-Coat,2120
-Kimono,2294
-Sweatpants,3048
-Hoodie,4048
-Joggers,4416
-Leggings,5013
-Jumpsuit,6153
-Jeans,7076
-Romper,7408
-Blazer,7495
-Top,10078
-Jacket,10467
-Sweater,13123
-Cardigan,13311
-Skirt,14773
-Tank,15429
-Shorts,19666
-Blouse,24557
-Tee,36887
-Dress,72158
+deep-v,51
+floral flutter,51
+floral textured,51
+topstitched,51
+raw-cut,51
+ornate paisley,52
+high-rise skinny,52
+graphic racerback,52
+boxy lace,52
+lace sheer,52
+defyant,52
+print smock,52
+ribbed stripe,53
+gaucho,53
+faux leather-trimmed,53
+high-slit maxi,53
+abstract diamond,53
+palm springs,54
+floral print strapless,54
+knit stripe,54
+striped trapeze,54
+lightning,54
+sheer-paneled,55
+cardio,55
+illusion neckline,55
+cropped knit,55
+contrast-trimmed,55
+back bow,55
+heathered stripe,55
+lace pleated,55
+loyal,55
+distressed low-rise,56
+faux leather varsity,56
+combo maxi,56
+abstract chevron print,56
+chambray drawstring,56
+knit lace,56
+blah,56
+tasmanian,56
+crochet embroidered,57
+lace layered,57
+gem,57
+skinny stretch,57
+dreamcatcher,57
+box-pleated,57
+trouble,57
+faux leather paneled,58
+faux leather-paneled,58
+belted floral print,58
+fit skinny,58
+rose skater,58
+internet,59
+bow-back,59
+fitted v-neck,59
+embroidered gauze peasant,59
+floral peasant,59
+draped surplice,60
+cutout lace,60
+print satin,60
+dynamite,60
+twist-front,61
+abstract paisley,61
+tie-back,62
+denim utility,62
+leather peplum,62
+stone washed,62
+bow-front,62
+leather trimmed,62
+quirky,62
+print smocked,62
+leather varsity,62
+clashist,63
+floral lace mini,63
+slick,63
+leather quilted,63
+belted plaid,64
+southwestern-inspired,64
+southwestern-print,64
+pintuck pleated,64
+springs,65
+beaded sheer,65
+print tulip,65
+multi-stripe,65
+beaded collar,65
+marled stripe,66
+ladder-back,66
+floral lace sheath,66
+embroidered maxi,66
+denim shift,67
+halen,67
+draped open-front,67
+collar lace,67
+wake,67
+woke,67
+overlay sheath,68
+killin,68
+mina,68
+dip-dyed,68
+strapless tribal,68
+cross-back,68
+leather-paneled,69
+embroidered woven,69
+modernist,69
+embroidered fit,69
+leather paneled,69
+neck ribbed,70
+foulard,70
+heroes,70
+m-slit maxi,70
+wildflower,70
+eyelet fit,70
+cami crop,71
+mock-neck,71
+draped shawl,71
+heathered v-neck,71
+chiffon paneled,71
+wifey,71
+knit shawl,72
+frida,72
+belted chiffon,72
+folk print,72
+notorious,72
+meow,72
+smile,73
+floral lace skater,73
+sunburst,73
+eyelash knit,73
+seaside,73
+tower,73
+mesh racerback,73
+split-back,73
+cotton drawstring,73
+floral mini,74
+glass,74
+floral midi,74
+cuffed-sleeve,74
+back striped,74
+mesh-trimmed,74
+zip-pocket,75
+back knit,75
+open-shoulder,75
+boxy knit,75
+minnie mouse,75
+devil,75
+floral knit,75
+vent,76
+drop-sleeve,76
+crochet overlay,76
+rugby striped,76
+doodle,77
+taco,77
+denim drawstring,77
+netted,78
+dip-dye,78
+texas,78
+crochet mesh,78
+drape-front,79
+leather-trimmed,79
+mosaic print,79
+classic pocket,79
+matelot,79
+loose-knit,79
+chiffon layered,79
+patched,80
+gauze peasant,80
+ethereal,80
+rib-knit,80
+kangaroo pocket,80
+spongebob,80
+knit trapeze,81
+pinstriped,81
+cities,83
+eiffel,83
+scuba skater,84
+crisscross-back,84
+dreamer,84
+colorblock pocket,84
+geo stripe,84
+y-back,84
+knit longline,84
+kahlo,84
+boxy pocket,85
+knit pocket,85
+beaded shift,85
+knit raglan,85
+suspender,85
+bed,86
+neck striped,86
+flounce maxi,86
+classic crew neck,87
+purl,87
+festive,88
+belted lace,88
+refined,88
+longline shirt,89
+floral pleated,89
+voyager,89
+chenille,90
+bell-sleeve,91
+classic v-neck,91
+oil,91
+flawless,91
+botanical print,91
+classic crew,91
+breton stripe,91
+floyd,91
+straight-leg,92
+v-cut,93
+belted floral,93
+regime,93
+sparkling,94
+floral mesh,94
+neck skater,94
+crocheted lace,94
+classic skinny,95
+blurred,95
+zipped,95
+mirrored,95
+gauzy,96
+cinched,97
+brushstroke print,98
+ribbed-knit,98
+roman,98
+boxy striped,98
+floral print surplice,98
+crochet crop,99
+low-rise skinny,99
+lace mesh,100
+leave,101
+single-button,101
+m-slit,102
+knit mini,102
+distressed mid-rise,102
+southwestern-patterned,102
+camera,103
+americana,103
+genuine,103
+t-back,103
+faux-wrap,103
+faux leather pencil,104
+textured woven,104
+garden party,105
+zeppelin,105
+nautical stripe,105
+print racerback,106
+tapestry,106
+tribal-inspired,106
+crepe shift,106
+cutout sheath,106
+faux leather mini,107
+crochet fringe,107
+nautical striped,108
+mid rise skinny,108
+lace midi,108
+venice,109
+chiffon floral,109
+drop-waist,110
+floral paisley,111
+embroidered shift,112
+giraffe print,112
+chiffon surplice,112
+daring,113
+one-shoulder,113
+dolman-sleeve,113
+popcorn,114
+fuzzy knit,114
+map,115
+rad,115
+collarless faux,115
+split-neck,116
+geo pattern,116
+bejeweled,116
+ornate print,116
+france,116
+knit striped,117
+marble print,118
+vented hem,119
+cotton knit,119
+lace sleeve,119
+gauze maxi,119
+led,120
+rustic,120
+surfer,121
+knit v-neck,122
+classic cotton,122
+abstract geo print,122
+faux leather skater,123
+shore,123
+abstract chevron,124
+paint splatter,125
+mesh overlay,125
+classic striped,125
+kurt,126
+print v-neck,126
+tulip-back,126
+windbreaker,126
+kid,126
+kaleidoscope print,127
+basquiat,128
+chiffon lace,128
+tie-neck,129
+floral shift,129
+lover,129
+abstract stripe,129
+pleated skater,130
+denim skater,130
+safari,130
+lace peplum,131
+cutout maxi,131
+loop,132
+hooded maxi,134
+floral surplice,135
+fan,136
+muse,136
+enchanted,136
+notched collar,136
+lacy,137
+pleated woven,137
+minnie,138
+crochet floral,138
+bleached denim,138
+hooded utility,139
+herringbone,139
+print scuba,140
+classic woven,141
+mixed stripe,141
+toggle,143
+one-button,143
+flutter-sleeve,143
+print strappy,143
+paradise,144
+convertible,145
+flat-front,145
+standout,146
+clean wash,146
+tasseled,147
+leather mini,147
+lakers,148
+mid-rise skinny,148
+crossback,149
+belted maxi,150
+morning,151
+shark,152
+back cutout,152
+giraffe,152
+pima,152
+origami,152
+hepburn,153
+shaggy,153
+chiffon shift,154
+rolling stones,155
+bike,156
+leather skater,157
+back lace,157
+elasticized,158
+striped v-neck,158
+kitty,160
+snoopy,160
+breton,160
+chiffon pleated,160
+checked,161
+velveteen,161
+lattice,161
+brushstroke,162
+neoprene,163
+leather pencil,163
+cover-up,164
+raga,164
+tupac,165
+field,165
+floral print skater,166
+dolphin hem,166
+high-neck,166
+arrow collar,167
+beaded chiffon,167
+sophisticated,170
+cheetah,173
+van,173
+swiss,173
+cami maxi,174
+scoop-neck,175
+rugby stripe,175
+guns,175
+sunflower,176
+civil,176
+corduroy,176
+tie-front,177
+rebel,177
+abstract printed,177
+turtle-neck,178
+posh,178
+cotton-blend,178
+shredded,179
+chiffon-paneled,180
+foil,180
+crochet knit,181
+abstract pattern,181
+fair isle,182
+reverse,183
+floral pattern,184
+coated,185
+floral-embroidered,186
+cloud wash,186
+boxy crop,186
+open-back,187
+knee-length,188
+speckled,189
+tokyo,190
+marilyn monroe,190
+fold-over,191
+isle,193
+denim pencil,193
+laser,194
+asymmetrical hem,194
+lace-trim,194
+stones,194
+fluted,194
+skort,195
+grid print,195
+two-button,195
+babe,196
+faux leather moto,196
+mandala print,197
+damask,198
+folk,199
+zip-front,200
+zip-up,200
+knit open,200
+snap,200
+bib,200
+classic knit,202
+slub-knit,203
+rolling,203
+abstract floral print,204
+desert,207
+please,209
+seersucker,210
+classic fit,210
+mosaic,211
+varsity-striped,213
+windowpane,214
+monroe,216
+marble,218
+fisherman,218
+seam,219
+heathered knit,219
+lace print,220
+power,221
+high-rise,221
+baja,222
+beatles,222
+double-breasted,222
+mob,224
+checkered,224
+audrey,224
+crepe woven,225
+pizza,225
+print woven,225
+lace pencil,226
+free spirit,227
+cutout-back,227
+ruffle trim,228
+pom-pom,228
+tonal,229
+pineapple,229
+kiss,230
+heart print,231
+crochet maxi,232
+flirty,232
+mesh paneled,232
+zig,234
+knit pencil,234
+long-sleeved,234
+distressed skinny,235
+dropped,236
+marilyn,237
+semi-sheer,238
+palm print,239
+painted,239
+lace skater,240
+abstract geo,240
+lace mini,240
+reversible,240
+dainty,242
+lace-trimmed,242
+spotted,244
+smart,244
+mixed print,246
+mickey mouse,246
+gathered waistline,247
+bead,248
+applique,252
+pointelle,252
+wide-leg,252
+oxford,254
+sateen,255
+foldover,255
+fair,255
+training,256
+darling,258
+pinstripe,258
+medallion print,260
+kangaroo,261
+youth,261
+embroidered gauze,262
+embroidered floral,263
+low-rise,265
+side-slit,265
+off-the-shoulder,265
+glitter,267
+crinkled,268
+raglan sleeve,268
+knit maxi,268
+classic denim,269
+wave,270
+ditsy floral print,271
+v-back,273
+barbie,276
+flounced,277
+print strapless,278
+run,279
+stretch-knit,279
+faux suede,281
+faux shearling,282
+splatter,285
+thermal,286
+coffee,287
+trouser,287
+self-tie,288
+triangle,290
+botanical,290
+cable-knit,292
+sea,293
+circle,294
+sporty,298
+feather,298
+leather moto,298
+kaleidoscope,299
+embroidered mesh,300
+galaxy,301
+ikat print,301
+lace-up,304
+rugby,304
+zigzag,305
+two-tone,305
+print surplice,306
+coast,306
+camouflage,306
+bird print,307
+moon,308
+bandana print,310
+butterfly print,311
+weekend,311
+nylon,312
+cap-sleeve,312
+cuffed denim,312
+button-front,314
+spirit,315
+high-slit,317
+elephant print,319
+floral skater,319
+crochet-trimmed,319
+mandala,322
+bleach,323
+cloud,324
+curved hem,324
+high-waist,324
+box pleat,325
+mickey,325
+gingham,326
+perforated,328
+sky,328
+houndstooth,334
+structured,336
+rise skinny,338
+fox,342
+brocade,345
+denim shirt,345
+lounge,347
+graphic muscle,350
+embroidered peasant,353
+fancy,355
+scallop,356
+candy,356
+paint,357
+brooklyn nets,358
+canvas,358
+bodycon midi,359
+knotted,361
+luxe,362
+knit skater,363
+lace maxi,363
+studio,368
+rhinestone,369
+caged,369
+twisted,370
+ny,371
+doll,371
+floral maxi,373
+chevron print,377
+heat,378
+drop waist,379
+chunky knit,381
+nets,381
+contrast trim,385
+lace shift,385
+bella,387
+roses,388
+sleek,389
+inset,394
+popover,395
+linen-blend,396
+vertical,399
+grid,399
+garden,401
+lace sheath,402
+mod,402
+print shift,404
+high-low,405
+pin,406
+braided,408
+curved,409
+shearling,414
+lace paneled,415
+clean,416
+mock neck,419
+mid-rise,419
+mid rise,420
+pintucked,420
+embroidered lace,427
+deep v-neck,430
+mandarin,431
+bustier,432
+palm tree,432
+bleached,433
+diamond print,434
+abstract floral,434
+leaf print,434
+cutoff,434
+mesh panel,436
+pj,442
+smock,444
+medallion,445
+ringer,445
+georgette,448
+track,450
+mesh-paneled,451
+boat neck,453
+lace overlay,455
+frayed,464
+joie,468
+raw,468
+print skater,470
+hood,471
+plaid shirt,473
+miami,474
+crochet-paneled,477
+drapey,479
+flat front,483
+sun,486
+bermuda,487
+puffer,488
+art,491
+nautical,496
+edge,500
+stone,503
+flutter sleeve,503
+nyc,509
+seamless,509
+lapel,510
+tube,514
+bold,514
+fresh,518
+lace panel,524
+fit flare,524
+shirred,524
+dream,525
+crisscross,527
+tree,532
+dotted,532
+angeles,533
+baroque print,539
+pan,548
+mock,550
+waffle,553
+chiffon shirt,555
+tile,557
+yoke,558
+side slit,559
+wild,565
+ornate,574
+sequined,576
+brooklyn,579
+flowy,583
+night,589
+bandana,593
+daisy print,596
+illusion,599
+bird,601
+cat,603
+elephant,610
+california,614
+stars,615
+ponte,616
+cozy,616
+dolman sleeve,619
+square,620
+biker,621
+zippered,622
+ditsy floral,624
+relaxed,626
+rainbow,629
+flared,630
+flounce,631
+harem,631
+slouchy,638
+buttoned,647
+lace-paneled,651
+roll,652
+west,660
+grunge,661
+scalloped,664
+chiffon maxi,667
+fuzzy,669
+butterfly,670
+ikat,670
+trimmed,671
+animal print,672
+smocked,675
+crocheted,684
+cowl neck,689
+keyhole,697
+tartan,698
+organza,699
+eyelet,701
+flutter,703
+box,705
+dots,715
+slip,716
+dolphin,721
+open-knit,721
+collared,726
+flat,729
+leaf,744
+patchwork,748
+patterned,749
+ombre,756
+tie-dye,760
+geo print,762
+eagle,766
+print shirt,771
+tulip,781
+swim,787
+pintuck,790
+camo,792
+colorblocked,794
+suede,802
+high-waisted,816
+twill,816
+fringed,822
+ditsy,825
+mineral wash,826
+asymmetric,833
+studded,834
+jacquard,839
+trapeze,840
+everyday,841
+cowl,847
+logo,847
+watercolor,852
+swing,853
+rib,857
+cargo,863
+eyelash lace,866
+destroyed,868
+performance,886
+running,892
+long-sleeve,906
+combo,925
+star,935
+city,939
+chunky,943
+bell,956
+tweed,963
+batwing,965
+tulle,972
+mineral,975
+polo,978
+washed,980
+palm,982
+tassel,984
+velvet,997
+overlay,1012
+athletic,1017
+southwestern,1022
+paris,1025
+chino,1028
+faded,1051
+utility,1070
+neon,1072
+leopard print,1074
+open-front,1078
+trench,1082
+bandage,1094
+ankle,1100
+island,1100
+varsity,1101
+eyelash,1106
+lady,1108
+ruffled,1110
+round,1116
+gauze,1127
+tiered,1130
+backless,1133
+pleat,1135
+mixed,1142
+baroque,1144
+animal,1149
+strap,1154
+ruched,1194
+heart,1216
+asymmetrical,1220
+burnout,1221
+life,1231
+big,1235
+crochet lace,1239
+sweetheart,1240
+ripped,1249
+medium,1251
+cable knit,1271
+workout,1275
+lace trim,1288
+fitted,1301
+babydoll,1330
+french terry,1334
+neckline,1342
+diamond,1377
+scuba,1382
+cuffed,1395
+strappy,1422
+elegant,1428
+chevron,1468
+paisley print,1472
+basic,1477
+la,1489
+satin,1494
+collarless,1497
+moto,1500
+rise,1510
+embellished,1543
+terry,1581
+daisy,1582
+paneled,1603
+faux fur,1607
+capri,1619
+yoga,1622
+bow,1669
+tropical,1671
+flower,1674
+split,1693
+sequin,1698
+solid,1718
+quilted,1721
+beach,1724
+retro,1725
+acid wash,1734
+peplum,1740
+stripes,1749
+cable,1766
+embroidery,1766
+sweet,1769
+crew neck,1798
+slub,1804
+new york,1813
+leopard,1832
+layered,1850
+dark,1864
+york,1877
+baseball,1880
+pullover,1959
+girl,1968
+shawl,1990
+draped,1992
+geo,1994
+soft,1995
+boyfriend,2001
+zipper,2006
+dolman,2017
+metallic,2044
+fur,2061
+slit,2073
+chic,2099
+ruffle,2099
+acid,2125
+boho,2127
+scoop,2136
+raglan,2162
+abstract print,2171
+oversized,2203
+chambray,2213
+floral lace,2224
+peasant,2228
+contrast,2233
+wrap,2250
+french,2251
+panel,2280
+fringe,2280
+girls,2337
+tunic,2355
+surplice,2378
+heathered,2403
+dye,2490
+light,2507
+cute,2550
+colorblock,2630
+crew,2681
+beaded,2702
+loose,2708
+shoulder,2722
+marled,2724
+party,2882
+racerback,2903
+ribbed,2908
+linen,3051
+longline,3178
+sheath,3201
+stretch,3223
+a-line,3240
+zip,3266
+pattern,3364
+shopping,3380
+hem,3412
+crepe,3456
+polka dot,3486
+slim,3495
+cutout,3500
+plaid,3504
+paisley,3517
+belted,3580
+distressed,3597
+pencil,3684
+cropped,3706
+boxy,3716
+textured,3762
+dot,3810
+rose,3902
+hooded,3958
+cut,4006
+cami,4151
+faux leather,4259
+sheer,4287
+strapless,4358
+drawstring,4588
+midi,4660
+woven,4744
+tribal,4823
+flare,4841
+wash,4919
+trim,5002
+shift,5025
+button,5057
+mesh,5109
+pocket,5193
+skinny,5227
+collar,5458
+v-neck,5493
+muscle,5565
+abstract,5643
+love,5942
+mini,6065
+skater,6205
+crop,6221
+bodycon,6419
+printed,6568
+pink,6569
+embroidered,6621
+long sleeve,6656
+red,6717
+pleated,6755
+graphic,6933
+classic,7184
+faux,7243
+leather,7334
+cotton,7370
+fit,7489
+floral print,7560
+summer,7616
+sleeveless,7987
+stripe,8591
+crochet,8987
+chiffon,11735
+striped,11771
+denim,13178
+shirt,14920
+maxi,15990
+sleeve,17828
+knit,18498
+lace,20434
+floral,24188
+print,37367

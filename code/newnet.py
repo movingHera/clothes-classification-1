@@ -3,7 +3,7 @@ import keras as k
 
 from keras import regularizers, initializers
 from keras.models import Model, Sequential
-from keras.layers import InputLayer, Dense, Dropout, Flatten, Activation
+from keras.layers import Input, InputLayer, Dense, Dropout, Flatten, Activation, concatenate
 from keras.layers import Conv2D, MaxPooling2D, BatchNormalization, GlobalAveragePooling2D
 from keras.applications.vgg16 import VGG16
 from keras.applications.vgg19 import VGG19
@@ -114,76 +114,50 @@ def model11(input_dim):
     model.add(Dropout(0.5))
     model.add(Dense(17, activation='sigmoid'))
     return model
+
+
+def block(in_layer, nchan):
+    b1 = Conv2D(nchan, (3, 3), padding='same', kernel_initializer='he_uniform')(in_layer)
+    b1 = BatchNormalization()(b1)
+    b1 = Activation('relu')(b1)
+    b2 = Conv2D(nchan, (3, 3), padding='same')(b1)
+    b2 = BatchNormalization()(b2)
+    b2 = Activation('relu')(b2)
+    b3 = Conv2D(nchan, (3, 3), padding='same')(b2)
+    b3 = BatchNormalization()(b3)
+    b3 = Activation('relu')(b3)
+    out_layer = concatenate([b1, b3], axis=3)
+    out_layer = Conv2D(nchan, (1, 1), padding='same')(out_layer)
+    return out_layer
+
 def model3(input_dim, output_dim=17):
-    model = Sequential()
-    # preprocess
-    model.add(BatchNormalization(input_shape=(input_dim, input_dim, 3)))
-    model.add(Conv2D(16, kernel_size=(1, 1), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(Conv2D(16, (1, 1), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(Conv2D(16, (1, 1), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
+    inputs = Input(shape=(input_dim, input_dim, 3))
 
-    model.add(BatchNormalization(input_shape=(input_dim, input_dim, 3)))
-    model.add(Conv2D(32, kernel_size=(3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(Conv2D(32, (3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(Conv2D(32, (3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.25))
+    down0 = block(inputs, 16)
+    down0_pool = MaxPooling2D((2,2), strides=(2,2))(down0)
 
-    model.add(Conv2D(64, kernel_size=(3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(Conv2D(64, (3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(Conv2D(64, (3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.25))
+    down1 = block(down0_pool, 32)
+    down1_pool = MaxPooling2D((2, 2), strides=(2, 2))(down1)
 
-    model.add(Conv2D(128, kernel_size=(3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(Conv2D(128, (3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(Conv2D(128, (3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.25))
+    down2 = block(down1_pool, 64)
+    down2_pool = MaxPooling2D((2, 2), strides=(2, 2))(down2)
 
-    model.add(Conv2D(256, kernel_size=(3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(Conv2D(256, (3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(Conv2D(256, (3, 3), padding='same', kernel_regularizer=regularizers.L1L2(l2=1E-4), bias_regularizer=regularizers.L1L2(l2=1E-4)))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.25))
+    down3 = block(down2_pool, 128)
+    down3_pool = MaxPooling2D((2, 2), strides=(2, 2))(down3)
 
-    model.add(Flatten())
-    model.add(Dense(512))
-    model.add(BatchNormalization())
-    model.add(Activation('relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(output_dim, activation='sigmoid'))
-    return model
+    down4 = block(down3_pool, 256)
+    down4_pool = MaxPooling2D((2, 2), strides=(2, 2))(down4)
+
+    feat = Flatten()(down4_pool)
+
+    feat = Dropout(0.25)(feat)
+    # feat = BatchNormalization()(feat)
+    feat = Dense(512, activation='relu', name='clothes_encoding')(feat)
+
+    output = Dropout(0.5)(feat)
+    # feat = BatchNormalization()(feat)
+    output = Dense(output_dim, activation='sigmoid')(output)
+    return Model(inputs=inputs, outputs=output)
 
 def model4(input_dim):
     # preprocess
