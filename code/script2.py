@@ -571,7 +571,7 @@ class AmazonForest():
                     pred = ' '.join(
                         list(map(lambda x: self.inv_label_map[x], *np.argmax(raw_result[index, :] - thresh))))
                 else:
-                    pred = ' '.join(list(map(lambda x: inv_label_map[x], *np.argmax(raw_result[index, :]))))
+                    pred = ' '.join(list(map(lambda x: self.inv_label_map[x], *np.argmax(raw_result[index, :]))))
             preds.append(pred)
 
         self.df_test_data['tags'] = preds

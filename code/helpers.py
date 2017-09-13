@@ -2,6 +2,7 @@ from sklearn.metrics import fbeta_score
 import numpy as np
 import cv2
 import imutils
+from keras.losses import binary_crossentropy
 
 def comp_mean(imglist):
     mean = [0, 0, 0]
@@ -11,12 +12,11 @@ def comp_mean(imglist):
 
 def load_param():
 
-    thresh = [[0.03, 0.03, 0.05, 0.07, 0.03, 0.02, 0.05, 0.03, 0.05, 0.05, 0.04, 0.03, 0.05, 0.1, 0.04, 0.04, 0.06],
-     [0.05, 0.03, 0.09, 0.08, 0.03, 0.02, 0.05, 0.08, 0.04, 0.05, 0.02, 0.03, 0.03, 0.07, 0.04, 0.06, 0.05],
-     [0.04, 0.03, 0.05, 0.06, 0.02, 0.04, 0.05, 0.05, 0.03, 0.05, 0.04, 0.03, 0.03, 0.11, 0.04, 0.05, 0.06],
-     [0.02, 0.03, 0.06, 0.1, 0.03, 0.01, 0.06, 0.05, 0.04, 0.1, 0.05, 0.03, 0.03, 0.1, 0.04, 0.05, 0.1],
-     [0.04, 0.03, 0.04, 0.06, 0.03, 0.03, 0.05, 0.09, 0.03, 0.07, 0.07, 0.04, 0.04, 0.08, 0.03, 0.06, 0.09]]
-    val_score = 0.93065441478548683
+    thresh = [[0.2, 0.75, 0.35, 0.05, 0.1, 0.05, 0.05, 0.7, 0.05, 0.65, 0.05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+
+
+    val_score = 0.28990436540247777
+
 
     return thresh, val_score
 
@@ -38,6 +38,9 @@ def find_f_measure_threshold2(probs, labels, num_iters=100, seed=0.21):
     print('')
     return best_thresholds, best_scores
 
+
+def loss_placeholder(y_true, y_pred):
+    return 0
 
 def normallize(img):
     img = img.astype(np.float16)
