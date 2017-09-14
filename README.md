@@ -1,6 +1,10 @@
 # Clothes classification (50 categories) and auto-tagging (1000 attributes) with Keras based on Tensorflow
 
-The prior is a single-label classification problem and the latter is a multi-label classification problem.
+Run:
+```script
+python clothes_classifier.py 2>&1 | tee ./result.log
+```
+The former is a single-label classification problem and the latter is a multi-label classification problem.
 
 - Dataset: [DeepFashion Attribute Prediction](http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html)
   - Number: 289147 images in total
