@@ -6,7 +6,7 @@ python clothes_classifier.py 2>&1 | tee ./result.log
 ```
 The former is a single-label classification problem and the latter is a multi-label classification problem.
 
-- Dataset: [DeepFashion Attribute Prediction](http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html)
+## Dataset: [DeepFashion Attribute Prediction](http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html)
   - Number: 289147 images in total
   - Distribution of the Clothes Category:
   
@@ -64,3 +64,9 @@ The former is a single-label classification problem and the latter is a multi-la
     |Sundress       |0       |
 
   - Distribution of the Clothes Attributes (Omit)
+  
+  
+  ## Result
+  
+  19/50-category classification: 0.3268 F1-score on validation set
+ 
