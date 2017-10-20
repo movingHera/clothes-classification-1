@@ -66,7 +66,7 @@ The former is a single-label classification problem and the latter is a multi-la
   - Distribution of the Clothes Attributes (Omit)
   
   
-  ## Result
+  ## Result Update
   
-  19/50-category classification: 0.3268 F1-score on validation set
+  - 10.19 19/50-category classification: 0.3268 F1-score on validation set
  
