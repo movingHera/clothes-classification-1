@@ -250,6 +250,18 @@ def vgg16():
     model = Model(inputs=base_model.input, outputs=x)
     return model
 
+def vgg16(input_dim, output_dim):
+    base_model = VGG16(weights='imagenet', include_top=False, input_shape = (input_dim,input_dim,3))
+    # base_model.load_weights('../weights/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5')
+    # Classification block
+    x = Flatten(name='flatten')(base_model.output)
+    x = Dense(4096, activation='relu', name='fc1')(x)
+    x = Dense(512, activation='relu', name='clothes_encoding')(x)
+    x = Dense(output_dim, activation='softmax', name='predictions')(x)
+
+    model = Model(inputs=base_model.input, outputs=x)
+    return model
+
 def vgg19():
     base_model = VGG19(weights=None, include_top=False, input_shape = (224,224,3))
     x = Flatten(name='flatten')(base_model.output)
