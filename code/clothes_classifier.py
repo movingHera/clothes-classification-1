@@ -31,11 +31,13 @@ class ClothesTypeClassifier():
         self.epochs = epochs
         self.learn_rate = learn_rate
         self.model_path = '../weights/clothes_classifier_model.h5'
-        self.load_data()
+        self.load_data(0)
         self.nTTA = 2
         self.nAug = 2
         # self.model = newnet.denseNet121(self.input_dim, self.numCategory)
-        self.model = newnet.model3(self.input_dim, self.numCategory)
+        # self.model = newnet.model3(self.input_dim, self.numCategory)
+        self.model = newnet.vgg16(self.input_dim, self.numCategory)
+
         with open('../weights/model.json', 'w') as json_file:
             json_file.write(self.model.to_json())
 

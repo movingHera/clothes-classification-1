@@ -4,6 +4,8 @@ from keras.models import model_from_json
 import cv2
 import numpy as np
 import keras.backend as K
+from glob import glob
+import pandas as pd
 
 import time
 import os
@@ -68,7 +70,41 @@ class ClothesEncoding():
 
 
 if __name__ == '__main__':
-    feat_extractor = ClothesEncoding('../weights/model.json', '../weights/clothes_115attr_classifier_model.h5')
+    feat_extractor = ClothesEncoding('../weights/model.json', '../weights/clothes_classifier_model.h5')
     img = cv2.imread('/home/jin/Desktop/test.jpg')
     encode = feat_extractor.inference(img)
     print('encode of the clothes:\n', encode)
+
+
+    # generate features
+    def getList(path, suffix_tuple=('jpg', 'png')):
+        file_list = []
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                if file.endswith(suffix_tuple):
+                    if file not in file_list:
+                        f = os.path.join(root, file)
+                        file_list.append(f)
+        return file_list
+
+    data_files = glob(os.path.join("../input/crop_image/img/25_Mesh-Paneled_Jersey_Dress", "*.jpg"))
+    # data_files = getList("../input/", "jpg")
+
+    images = []
+    features = []
+    i = 1
+    N = len(data_files)
+    for image_path in data_files:
+        i += 1
+        print("{}/{}".format(i, N))
+        images.append(image_path[image_path.rfind('/')+1:])
+
+        img = cv2.imread(image_path)
+        encode = feat_extractor.inference(img)  # encode is a numpy array
+        features.append(','.join(map(str, encode.flatten().tolist())))
+        if i > 100:
+            break;
+
+    print("Generating submission file...")
+    df = pd.DataFrame({'clothes': images, 'features': features})
+    df.to_csv('../submit/clothes-features.csv', index=False)
